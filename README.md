@@ -1,5 +1,4 @@
-
-readme_content = '''# ✦ Lumière — Luxury Lifestyle
+ ✦ Lumière — Luxury Lifestyle
 
 [![Website Value](https://img.shields.io/badge/Value-%241%2C000-gold?style=for-the-badge&logo=ethereum)](https://github.com/nadir-salaheddine/lumiere-luxury-lifestyle)
 [![Tech Stack](https://img.shields.io/badge/HTML5-CSS3-JS-3D-blueviolet?style=for-the-badge&logo=javascript)](https://github.com/nadir-salaheddine/lumiere-luxury-lifestyle)
