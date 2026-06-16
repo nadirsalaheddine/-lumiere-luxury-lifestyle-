@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE | Luxury Lifestyle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== DARK/LIGHT MODE TOGGLE ==================== -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-track">
+            <div class="toggle-thumb">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== LANGUAGE SWITCHER ==================== -->
+    <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+    </div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                        <path d="M20 8v12l8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="logo-text">Lumiere</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home" data-key="nav_home">الرئيسية</a></li>
+                <li><a href="#products" data-key="nav_products">المنتجات</a></li>
+                <li><a href="#about" data-key="nav_about">من نحن</a></li>
+                <li><a href="#contact" data-key="nav_contact">تواصل</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" data-key="nav_home">الرئيسية</a></li>
+            <li><a href="#products" data-key="nav_products">المنتجات</a></li>
+            <li><a href="#about" data-key="nav_about">من نحن</a></li>
+            <li><a href="#contact" data-key="nav_contact">تواصل</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== CART SIDEBAR ==================== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cart_title">سلة المشتريات</h3>
+            <button class="cart-close" id="cartClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-empty" id="cartEmpty">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8L10 20v32a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4V20l-6-12H16z"/>
+                <line x1="10" y1="20" x2="46" y2="20"/>
+                <path d="M24 20V12a8 8 0 0 1 16 0v8"/>
+            </svg>
+            <p data-key="cart_empty">سلتك فارغة</p>
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-totals">
+                <div class="total-row">
+                    <span data-key="cart_subtotal">المجموع الفرعي</span>
+                    <span class="subtotal-price" id="subtotalPrice">$0.00</span>
+                </div>
+                <div class="total-row grand">
+                    <span data-key="cart_total">الإجمالي</span>
+                    <span class="grand-price" id="grandPrice">$0.00</span>
+                </div>
+                <div class="currency-display" id="currencyDisplay">
+                    <span class="currency-usd">$0.00</span>
+                    <span class="currency-dzd">0.00 د.ج</span>
+                    <span class="currency-eur">0.00 €</span>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" data-key="cart_checkout">إتمام الطلب</button>
+        </div>
+    </aside>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>✦</span>
+                <span data-key="hero_badge">فخامة لا تُضاهى</span>
+            </div>
+            <h1 class="hero-title">Lumiere</h1>
+            <p class="hero-subtitle" data-key="hero_subtitle">
+                حيث تلتقي أناقة البحر الأبيض المتوسط بروح الجمال الطبيعي
+            </p>
+            <div class="hero-cta">
+                <a href="#products" class="btn-primary" data-key="hero_cta_primary">اكتشف المنتجات</a>
+                <a href="#about" class="btn-secondary" data-key="hero_cta_secondary">تعرف علينا</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="24" cy="24" r="20"/>
+                            <path d="M24 10v14l10 6"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature_1_title">توصيل سريع</h3>
+                    <p data-key="feature_1_desc">نوصلك منتجاتك في أقل من 48 ساعة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 4l6 16h16L34 30l6 16-16-10-16 10 6-16L2 20h16L24 4z"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature_2_title">جودة ممتازة</h3>
+                    <p data-key="feature_2_desc">منتجات مختارة بعناية فائقة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="8" y="16" width="32" height="24" rx="4"/>
+                            <path d="M16 16V10a8 8 0 0 1 16 0v6"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature_3_title">دفع آمن</h3>
+                    <p data-key="feature_3_desc">حماية كاملة لبياناتك البنكية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="24" cy="24" r="20"/>
+                            <path d="M24 14v10l8 8"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="feature_4_title">استرجاع سهل</h3>
+                    <p data-key="feature_4_desc">30 يوم ضمان استرجاع كامل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-key="products_label">تشكيلتنا</span>
+                <h2 class="section-title" data-key="products_title">منتجاتنا المميزة</h2>
+                <p class="section-desc" data-key="products_desc">اختر من مجموعتنا الفاخرة من منتجات العناية والأزياء</p>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="all" data-key="tab_all">الكل</button>
+                <button class="tab-btn" data-category="skincare" data-key="tab_skincare">عناية بالبشرة</button>
+                <button class="tab-btn" data-category="clothing" data-key="tab_clothing">أزياء</button>
+                <button class="tab-btn" data-category="accessories" data-key="tab_accessories">إكسسوارات</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+
+                <!-- ===== SKINCARE PRODUCTS - Warm/Beige Backgrounds ===== -->
+
+                <!-- Product 1: Bergamot Serum -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-badge" data-key="badge_new">جديد</div>
+                    <div class="product-image warm-beige">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Sun + Cloud icon like BellaVita -->
+                            <circle cx="35" cy="35" r="12" fill="#F5A623" opacity="0.9"/>
+                            <circle cx="35" cy="35" r="8" fill="#F8D56B"/>
+                            <path d="M45 38c0-4.4-3.6-8-8-8s-8 3.6-8 8" stroke="#F5A623" stroke-width="2" fill="none"/>
+                            <path d="M48 42c0-3.3-2.7-6-6-6s-6 2.7-6 6" stroke="#F5A623" stroke-width="2" fill="none"/>
+                            <ellipse cx="50" cy="48" rx="14" ry="10" fill="#F5A623" opacity="0.8"/>
+                            <ellipse cx="42" cy="52" rx="10" ry="7" fill="#F8D56B" opacity="0.9"/>
+                            <ellipse cx="58" cy="50" rx="8" ry="6" fill="#F8D56B" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_1_name">Bergamot Velvet Serum</h3>
+                        <p class="product-desc" data-key="product_1_desc">A rare, lightweight golden oil providing high-speed hydration and absolute defense.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$45</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€42</span>
+                        </div>
+                        <button class="add-to-cart" data-id="1" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Olive Elixir -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image warm-green">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Olive leaf icon -->
+                            <path d="M40 65c0-15-10-25-10-35s10-15 10-15s10 5 10 15s-10 20-10 35z" fill="#7CB342" opacity="0.9"/>
+                            <path d="M40 65V20" stroke="#558B2F" stroke-width="2"/>
+                            <path d="M40 35c-8-5-15-3-15-3" stroke="#7CB342" stroke-width="2" fill="none"/>
+                            <path d="M40 45c8-5 15-3 15-3" stroke="#7CB342" stroke-width="2" fill="none"/>
+                            <ellipse cx="40" cy="18" rx="6" ry="4" fill="#8BC34A"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_2_name">Olive Leaf Luxury Elixir</h3>
+                        <p class="product-desc" data-key="product_2_desc">Premium extract harvested from ancient Tuscan groves for timeless radiance.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$68</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€63</span>
+                        </div>
+                        <button class="add-to-cart" data-id="2" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Rose Cream -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-badge" data-key="badge_bestseller">الأكثر مبيعاً</div>
+                    <div class="product-image warm-pink">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Rose icon -->
+                            <circle cx="40" cy="35" r="15" fill="#E91E63" opacity="0.2"/>
+                            <circle cx="40" cy="35" r="12" fill="#F48FB1" opacity="0.6"/>
+                            <circle cx="40" cy="35" r="8" fill="#F8BBD0"/>
+                            <circle cx="40" cy="35" r="4" fill="#FCE4EC"/>
+                            <path d="M40 50v20" stroke="#C2185B" stroke-width="2"/>
+                            <path d="M40 58c-6 0-10-4-10-4" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                            <path d="M40 62c6 0 10-4 10-4" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_3_name">Damask Rose Night Cream</h3>
+                        <p class="product-desc" data-key="product_3_desc">Rich overnight repair with Bulgarian rose essence and shea butter.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$55</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€51</span>
+                        </div>
+                        <button class="add-to-cart" data-id="3" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Honey Mask -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image warm-amber">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Honey drop icon -->
+                            <path d="M40 15c0 0-15 20-15 30a15 15 0 0 0 30 0c0-10-15-30-15-30z" fill="#FFC107" opacity="0.8"/>
+                            <path d="M40 15c0 0-15 20-15 30a15 15 0 0 0 30 0c0-10-15-30-15-30z" stroke="#FF8F00" stroke-width="2" fill="none"/>
+                            <ellipse cx="40" cy="48" rx="8" ry="5" fill="#FF8F00" opacity="0.4"/>
+                            <circle cx="35" cy="38" r="2" fill="#FFF8E1" opacity="0.8"/>
+                            <circle cx="45" cy="42" r="1.5" fill="#FFF8E1" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_4_name">Manuka Honey Glow Mask</h3>
+                        <p class="product-desc" data-key="product_4_desc">Deep cleansing mask with New Zealand Manuka honey and kaolin clay.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$38</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€35</span>
+                        </div>
+                        <button class="add-to-cart" data-id="4" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== CLOTHING PRODUCTS - Cool Backgrounds ===== -->
+
+                <!-- Product 5: Linen Shirt -->
+                <div class="product-card" data-category="clothing">
+                    <div class="product-image cool-blue">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Shirt icon -->
+                            <path d="M25 20l15-8 15 8v50H25V20z" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
+                            <path d="M40 12v58" stroke="#1976D2" stroke-width="1.5"/>
+                            <path d="M32 25l8 8 8-8" stroke="#1976D2" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="35" r="2" fill="#1976D2"/>
+                            <circle cx="40" cy="45" r="2" fill="#1976D2"/>
+                            <circle cx="40" cy="55" r="2" fill="#1976D2"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_5_name">Amalfi Linen Shirt</h3>
+                        <p class="product-desc" data-key="product_5_desc">Breathable Italian linen with mother-of-pearl buttons, perfect for summer evenings.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$120</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€110</span>
+                        </div>
+                        <button class="add-to-cart" data-id="5" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6: Silk Dress -->
+                <div class="product-card" data-category="clothing">
+                    <div class="product-badge" data-key="badge_limited">كمية محدودة</div>
+                    <div class="product-image cool-lavender">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Dress icon -->
+                            <path d="M30 15c0 0 10-5 20 0s10 20 10 20l-5 40H25l-5-40s5-15 10-20z" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+                            <path d="M30 15c0 0 10 10 20 0" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+                            <path d="M35 35c0 0 5 5 10 0" stroke="#CE93D8" stroke-width="1.5" fill="none"/>
+                            <circle cx="40" cy="25" r="3" fill="#CE93D8"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_6_name">Parisian Silk Midi Dress</h3>
+                        <p class="product-desc" data-key="product_6_desc">Flowing French silk with delicate pleating and hidden side zipper.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$250</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€230</span>
+                        </div>
+                        <button class="add-to-cart" data-id="6" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 7: Leather Jacket -->
+                <div class="product-card" data-category="clothing">
+                    <div class="product-image cool-slate">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Jacket icon -->
+                            <path d="M20 15l10-5 20 0 10 5v55H20V15z" fill="#ECEFF1" stroke="#455A64" stroke-width="2"/>
+                            <path d="M40 10v60" stroke="#455A64" stroke-width="2"/>
+                            <rect x="25" y="30" width="12" height="15" rx="2" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
+                            <rect x="43" y="30" width="12" height="15" rx="2" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
+                            <circle cx="40" cy="22" r="3" fill="#455A64"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_7_name">Madrid Leather Jacket</h3>
+                        <p class="product-desc" data-key="product_7_desc">Handcrafted Spanish leather with vintage brass hardware and quilted lining.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$350</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€322</span>
+                        </div>
+                        <button class="add-to-cart" data-id="7" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 8: Cashmere Sweater -->
+                <div class="product-card" data-category="clothing">
+                    <div class="product-image cool-cream">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Sweater icon -->
+                            <path d="M20 20l10-5 20 0 10 5v50H20V20z" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+                            <path d="M30 15v10" stroke="#E65100" stroke-width="2"/>
+                            <path d="M50 15v10" stroke="#E65100" stroke-width="2"/>
+                            <path d="M20 25h40" stroke="#E65100" stroke-width="1.5"/>
+                            <path d="M20 35h40" stroke="#E65100" stroke-width="1"/>
+                            <path d="M20 45h40" stroke="#E65100" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_8_name">Alpine Cashmere Sweater</h3>
+                        <p class="product-desc" data-key="product_8_desc">Ultra-soft Mongolian cashmere with ribbed cuffs and crew neckline.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$180</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€165</span>
+                        </div>
+                        <button class="add-to-cart" data-id="8" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== ACCESSORIES PRODUCTS - Elegant Backgrounds ===== -->
+
+                <!-- Product 9: Gold Watch -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image elegant-gold">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Watch icon -->
+                            <rect x="28" y="5" width="24" height="12" rx="3" fill="#8D6E63"/>
+                            <circle cx="40" cy="40" r="22" fill="#FFD700" stroke="#FFA000" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="18" fill="#FFF8E1"/>
+                            <circle cx="40" cy="40" r="2" fill="#333"/>
+                            <line x1="40" y1="40" x2="40" y2="28" stroke="#333" stroke-width="2"/>
+                            <line x1="40" y1="40" x2="48" y2="40" stroke="#333" stroke-width="1.5"/>
+                            <rect x="28" y="63" width="24" height="12" rx="3" fill="#8D6E63"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_9_name">Swiss Gold Chronograph</h3>
+                        <p class="product-desc" data-key="product_9_desc">18K gold-plated Swiss movement with sapphire crystal and leather strap.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$580</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€533</span>
+                        </div>
+                        <button class="add-to-cart" data-id="9" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 10: Leather Bag -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image elegant-taupe">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Bag icon -->
+                            <path d="M15 30c0-5 5-10 10-10h30c5 0 10 5 10 10v40H15V30z" fill="#D7CCC8" stroke="#5D4037" stroke-width="2"/>
+                            <path d="M30 20c0-8 5-12 10-12s10 4 10 12" stroke="#5D4037" stroke-width="3" fill="none"/>
+                            <rect x="32" y="42" width="16" height="10" rx="2" fill="#8D6E63" stroke="#5D4037" stroke-width="1.5"/>
+                            <circle cx="40" cy="47" r="2" fill="#D7CCC8"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_10_name">Tuscan Leather Tote</h3>
+                        <p class="product-desc" data-key="product_10_desc">Hand-stitched Italian leather with gold-tone hardware and silk lining.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$420</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€386</span>
+                        </div>
+                        <button class="add-to-cart" data-id="10" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 11: Sunglasses -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-badge" data-key="badge_new">جديد</div>
+                    <div class="product-image elegant-black">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Sunglasses icon -->
+                            <path d="M10 35c0-5 5-8 10-8h12c5 0 8 3 8 8v8c0 8-6 14-14 14s-14-6-14-14v-8z" fill="#212121" stroke="#424242" stroke-width="2"/>
+                            <path d="M40 35c0-5 5-8 10-8h12c5 0 8 3 8 8v8c0 8-6 14-14 14s-14-6-14-14v-8z" fill="#212121" stroke="#424242" stroke-width="2"/>
+                            <line x1="28" y1="32" x2="52" y2="32" stroke="#424242" stroke-width="2"/>
+                            <line x1="5" y1="30" x2="10" y2="35" stroke="#424242" stroke-width="2"/>
+                            <line x1="75" y1="30" x2="70" y2="35" stroke="#424242" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_11_name">Riviera Polarized Shades</h3>
+                        <p class="product-desc" data-key="product_11_desc">Italian acetate frames with UV400 polarized lenses and gold hinges.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$195</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€179</span>
+                        </div>
+                        <button class="add-to-cart" data-id="11" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 12: Scarf -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image elegant-terracotta">
+                        <svg class="product-icon" viewBox="0 0 80 80" fill="none">
+                            <!-- Scarf icon -->
+                            <path d="M20 15c0 0 15 5 20 20s-5 25-5 25" stroke="#E64A19" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M30 10c0 0 15 5 20 20s-5 25-5 25" stroke="#FF7043" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M40 8c0 0 15 5 20 20s-5 25-5 25" stroke="#FFAB91" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <circle cx="25" cy="58" r="4" fill="#E64A19"/>
+                            <circle cx="35" cy="63" r="3" fill="#FF7043"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-key="product_12_name">Silk Medici Scarf</h3>
+                        <p class="product-desc" data-key="product_12_desc">Hand-printed Florentine silk with Renaissance-inspired botanical motifs.</p>
+                        <div class="product-price">
+                            <span class="price-usd">$145</span>
+                            <span class="price-sep">/</span>
+                            <span class="price-eur">€133</span>
+                        </div>
+                        <button class="add-to-cart" data-id="12" data-key="btn_add">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-image-wrapper">
+                        <div class="about-glow"></div>
+                        <svg viewBox="0 0 400 400" class="about-svg">
+                            <defs>
+                                <linearGradient id="medGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4FC3F7"/>
+                                    <stop offset="100%" stop-color="#0288D1"/>
+                                </linearGradient>
+                                <linearGradient id="medGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FFF59D"/>
+                                    <stop offset="100%" stop-color="#FBC02D"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="320" cy="80" r="40" fill="url(#medGrad2)"/>
+                            <path d="M0 250 Q100 230 200 250 Q300 270 400 250 L400 400 L0 400 Z" fill="url(#medGrad1)"/>
+                            <path d="M0 280 Q50 260 100 280 Q150 300 200 280 Q250 260 300 280 Q350 300 400 280" stroke="#81D4FA" stroke-width="3" fill="none"/>
+                            <path d="M0 310 Q50 290 100 310 Q150 330 200 310 Q250 290 300 310 Q350 330 400 310" stroke="#4FC3F7" stroke-width="2" fill="none"/>
+                            <path d="M50 350 Q100 300 150 320 Q200 340 250 300" stroke="#689F38" stroke-width="4" fill="none"/>
+                            <ellipse cx="80" cy="330" rx="8" ry="12" fill="#8BC34A" transform="rotate(-30 80 330)"/>
+                            <ellipse cx="120" cy="310" rx="8" ry="12" fill="#8BC34A" transform="rotate(20 120 310)"/>
+                            <ellipse cx="180" cy="325" rx="8" ry="12" fill="#8BC34A" transform="rotate(-15 180 325)"/>
+                            <ellipse cx="220" cy="305" rx="8" ry="12" fill="#8BC34A" transform="rotate(35 220 305)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label" data-key="about_label">قصتنا</span>
+                    <h2 class="section-title" data-key="about_title">حيث يلتقي الجمال بالأصالة</h2>
+                    <p class="about-text" data-key="about_p1">
+                        Lumiere ولد من حلم بسيط: جمع أرقى ما تقدمه شواطئ البحر الأبيض المتوسط في مكان واحد. من عبق الأرغان المغربي إلى أناقة الكتان الإيطالي، نختار كل منتج بعناية فائقة.
+                    </p>
+                    <p class="about-text" data-key="about_p2">
+                        نؤمن بأن الفخامة الحقيقية تكمن في البساطة والجودة. كل منتج في تشكيلتنا يحمل قصة من الأرض التي نشأ منها، ويداعب حواسك بأصالة لا تُضاهى.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">15K+</span>
+                            <span class="stat-label" data-key="stat_customers">عميل سعيد</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label" data-key="stat_products">منتج فاخر</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label" data-key="stat_countries">دول أوروبية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-key="testimonials_label">آراء العملاء</span>
+                <h2 class="section-title" data-key="testimonials_title">ماذا يقولون عنا</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-key="testimonial_1">
+                        "أفضل منتجات جربتها في حياتي! السيروم الذهبي غيّر بشرتي تماماً. شكراً Lumiere!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <span class="author-name">سارة المغربية</span>
+                            <span class="author-location">الدار البيضاء، المغرب</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-key="testimonial_2">
+                        "الحقيبة الإيطالية روعة! جودة الجلد لا تصدق. سأشتري من هنا دائماً."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <span class="author-name">أحمد الطرابلسي</span>
+                            <span class="author-location">طرابلس، ليبيا</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-key="testimonial_3">
+                        "توصيل سريع وخدمة ممتازة. الفستان الحريري فرنسي فخامة بمعنى الكلمة!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L</div>
+                        <div class="author-info">
+                            <span class="author-name">ليلى الجزائرية</span>
+                            <span class="author-location">الجزائر العاصمة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-label" data-key="contact_label">تواصل معنا</span>
+                    <h2 class="section-title" data-key="contact_title">نحن هنا لمساعدتك</h2>
+                    <p class="contact-desc" data-key="contact_desc">
+                        هل لديك سؤال؟ فريقنا جاهز للإجابة على استفساراتك في أي وقت.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>+213 555 123 456</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>hello@lumiere.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span data-key="contact_address">الجزائر العاصمة، الجزائر</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label data-key="form_name">الاسم الكامل</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_email">البريد الإلكتروني</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_phone">رقم الهاتف</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_address">العنوان</label>
+                            <input type="text" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_message">رسالتك</label>
+                            <textarea name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" data-key="form_submit">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CHECKOUT MODAL ==================== -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="thank-you-card" id="thankYouCard">
+                    <div class="thank-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 32 L28 40 L44 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-key="thank_title">شكراً لثقتك بنا!</h3>
+                    <p data-key="thank_text">تم استلام طلبك بنجاح. سنتواصل معك قريباً لتأكيد التفاصيل.</p>
+                    <div class="order-summary" id="orderSummary"></div>
+                </div>
+                <div class="checkout-form-wrapper" id="checkoutFormWrapper">
+                    <h3 data-key="checkout_title">إتمام الطلب</h3>
+                    <form class="checkout-form" id="checkoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-key="form_name">الاسم</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-key="form_lastname">اللقب</label>
+                                <input type="text" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_phone">رقم الهاتف</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-key="form_address">العنوان الكامل</label>
+                            <input type="text" name="address" required>
+                        </div>
+                        <div class="checkout-total">
+                            <span data-key="checkout_total">الإجمالي:</span>
+                            <span class="checkout-price" id="checkoutPrice">$0.00</span>
+                        </div>
+                        <button type="submit" class="btn-primary" data-key="checkout_confirm">تأكيد الطلب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 8v12l8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Lumiere</span>
+                    </a>
+                    <p data-key="footer_desc">
+                        وجهتك الأولى للفخامة الأوروبية الأصيلة. نجمع بين أرقى التقاليد وجمال البحر الأبيض المتوسط.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-key="footer_quick">روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home" data-key="nav_home">الرئيسية</a></li>
+                        <li><a href="#products" data-key="nav_products">المنتجات</a></li>
+                        <li><a href="#about" data-key="nav_about">من نحن</a></li>
+                        <li><a href="#contact" data-key="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-key="footer_categories">التصنيفات</h4>
+                    <ul>
+                        <li><a href="#" data-key="tab_skincare">عناية بالبشرة</a></li>
+                        <li><a href="#" data-key="tab_clothing">أزياء</a></li>
+                        <li><a href="#" data-key="tab_accessories">إكسسوارات</a></li>
+                        <li><a href="#" data-key="tab_new">وصل حديثاً</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 data-key="footer_newsletter">اشترك معنا</h4>
+                    <p data-key="footer_newsletter_desc">احصل على أحدث العروض والمنتجات الجديدة</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" data-key-placeholder="placeholder_email">
+                        <button type="submit">→</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-credit">
+                    <span data-key="footer_made">صُنع بكل حب من طرف</span>
+                    <strong>Nadir Salaheddine</strong>
+                </p>
+                <p class="footer-price" data-key="footer_price">قيمة هذا الموقع: $1,000</p>
+                <p class="footer-copyright">© 2026 Lumiere. <span data-key="footer_rights">جميع الحقوق محفوظة.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
