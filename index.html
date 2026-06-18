@@ -11,29 +11,6 @@
 </head>
 <body>
 
-    <!-- ==================== DARK/LIGHT MODE TOGGLE ==================== -->
-    <div class="theme-toggle" id="themeToggle">
-        <div class="toggle-track">
-            <div class="toggle-thumb">
-                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/>
-                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                </svg>
-                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== LANGUAGE SWITCHER ==================== -->
-    <div class="lang-switcher" id="langSwitcher">
-        <button class="lang-btn active" data-lang="ar">العربية</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="it">IT</button>
-    </div>
-
     <!-- ==================== NAVIGATION ==================== -->
     <nav class="main-nav" id="mainNav">
         <div class="nav-container">
@@ -46,7 +23,7 @@
                 </span>
                 <span class="logo-text">Lumiere</span>
             </a>
-
+            
             <ul class="nav-links">
                 <li><a href="#home" data-key="nav_home">الرئيسية</a></li>
                 <li><a href="#products" data-key="nav_products">المنتجات</a></li>
@@ -221,18 +198,13 @@
             <!-- Products Grid -->
             <div class="products-grid" id="productsGrid">
 
-                <!-- ===== SKINCARE PRODUCTS - Warm/Beige Backgrounds ===== -->
-
-                <!-- Product 1: Bergamot Serum -->
+                <!-- ===== SKINCARE PRODUCTS ===== -->
                 <div class="product-card" data-category="skincare">
                     <div class="product-badge" data-key="badge_new">جديد</div>
                     <div class="product-image warm-beige">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Sun + Cloud icon like BellaVita -->
                             <circle cx="35" cy="35" r="12" fill="#F5A623" opacity="0.9"/>
                             <circle cx="35" cy="35" r="8" fill="#F8D56B"/>
-                            <path d="M45 38c0-4.4-3.6-8-8-8s-8 3.6-8 8" stroke="#F5A623" stroke-width="2" fill="none"/>
-                            <path d="M48 42c0-3.3-2.7-6-6-6s-6 2.7-6 6" stroke="#F5A623" stroke-width="2" fill="none"/>
                             <ellipse cx="50" cy="48" rx="14" ry="10" fill="#F5A623" opacity="0.8"/>
                             <ellipse cx="42" cy="52" rx="10" ry="7" fill="#F8D56B" opacity="0.9"/>
                             <ellipse cx="58" cy="50" rx="8" ry="6" fill="#F8D56B" opacity="0.7"/>
@@ -255,15 +227,11 @@
                     </div>
                 </div>
 
-                <!-- Product 2: Olive Elixir -->
                 <div class="product-card" data-category="skincare">
                     <div class="product-image warm-green">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Olive leaf icon -->
                             <path d="M40 65c0-15-10-25-10-35s10-15 10-15s10 5 10 15s-10 20-10 35z" fill="#7CB342" opacity="0.9"/>
                             <path d="M40 65V20" stroke="#558B2F" stroke-width="2"/>
-                            <path d="M40 35c-8-5-15-3-15-3" stroke="#7CB342" stroke-width="2" fill="none"/>
-                            <path d="M40 45c8-5 15-3 15-3" stroke="#7CB342" stroke-width="2" fill="none"/>
                             <ellipse cx="40" cy="18" rx="6" ry="4" fill="#8BC34A"/>
                         </svg>
                     </div>
@@ -284,18 +252,16 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Rose Cream -->
                 <div class="product-card" data-category="skincare">
                     <div class="product-badge" data-key="badge_bestseller">الأكثر مبيعاً</div>
                     <div class="product-image warm-pink">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Rose icon -->
                             <circle cx="40" cy="35" r="15" fill="#E91E63" opacity="0.2"/>
                             <circle cx="40" cy="35" r="12" fill="#F48FB1" opacity="0.6"/>
                             <circle cx="40" cy="35" r="8" fill="#F8BBD0"/>
                             <circle cx="40" cy="35" r="4" fill="#FCE4EC"/>
                             <path d="M40 50v20" stroke="#C2185B" stroke-width="2"/>
-                            <path d="M40 58c-6 0-10-4-10-4" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                            <path d="M35 58c-6 0-10-4-10-4" stroke="#4CAF50" stroke-width="2" fill="none"/>
                             <path d="M40 62c6 0 10-4 10-4" stroke="#4CAF50" stroke-width="2" fill="none"/>
                         </svg>
                     </div>
@@ -316,11 +282,9 @@
                     </div>
                 </div>
 
-                <!-- Product 4: Honey Mask -->
                 <div class="product-card" data-category="skincare">
                     <div class="product-image warm-amber">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Honey drop icon -->
                             <path d="M40 15c0 0-15 20-15 30a15 15 0 0 0 30 0c0-10-15-30-15-30z" fill="#FFC107" opacity="0.8"/>
                             <path d="M40 15c0 0-15 20-15 30a15 15 0 0 0 30 0c0-10-15-30-15-30z" stroke="#FF8F00" stroke-width="2" fill="none"/>
                             <ellipse cx="40" cy="48" rx="8" ry="5" fill="#FF8F00" opacity="0.4"/>
@@ -345,13 +309,10 @@
                     </div>
                 </div>
 
-                <!-- ===== CLOTHING PRODUCTS - Cool Backgrounds ===== -->
-
-                <!-- Product 5: Linen Shirt -->
+                <!-- ===== CLOTHING PRODUCTS ===== -->
                 <div class="product-card" data-category="clothing">
                     <div class="product-image cool-blue">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Shirt icon -->
                             <path d="M25 20l15-8 15 8v50H25V20z" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
                             <path d="M40 12v58" stroke="#1976D2" stroke-width="1.5"/>
                             <path d="M32 25l8 8 8-8" stroke="#1976D2" stroke-width="2" fill="none"/>
@@ -377,16 +338,14 @@
                     </div>
                 </div>
 
-                <!-- Product 6: Silk Dress -->
                 <div class="product-card" data-category="clothing">
                     <div class="product-badge" data-key="badge_limited">كمية محدودة</div>
                     <div class="product-image cool-lavender">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Dress icon -->
-                            <path d="M30 15c0 0 10-5 20 0s10 20 10 20l-5 40H25l-5-40s5-15 10-20z" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+                            <path d="M30 15c0 0 10 5 20 0s10 20 10 20l-5 40H25l-5-40s5-15 10-20z" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
                             <path d="M30 15c0 0 10 10 20 0" stroke="#7B1FA2" stroke-width="2" fill="none"/>
-                            <path d="M35 35c0 0 5 5 10 0" stroke="#CE93D8" stroke-width="1.5" fill="none"/>
                             <circle cx="40" cy="25" r="3" fill="#CE93D8"/>
+                            <path d="M35 35c0 0 5 5 10 0" stroke="#CE93D8" stroke-width="1.5" fill="none"/>
                         </svg>
                     </div>
                     <div class="product-info">
@@ -406,15 +365,13 @@
                     </div>
                 </div>
 
-                <!-- Product 7: Leather Jacket -->
                 <div class="product-card" data-category="clothing">
                     <div class="product-image cool-slate">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Jacket icon -->
                             <path d="M20 15l10-5 20 0 10 5v55H20V15z" fill="#ECEFF1" stroke="#455A64" stroke-width="2"/>
                             <path d="M40 10v60" stroke="#455A64" stroke-width="2"/>
-                            <rect x="25" y="30" width="12" height="15" rx="2" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
-                            <rect x="43" y="30" width="12" height="15" rx="2" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
+                            <rect x="25" y="30" width="12" height="15" rx="3" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
+                            <rect x="43" y="30" width="12" height="15" rx="3" fill="#CFD8DC" stroke="#455A64" stroke-width="1.5"/>
                             <circle cx="40" cy="22" r="3" fill="#455A64"/>
                         </svg>
                     </div>
@@ -435,11 +392,9 @@
                     </div>
                 </div>
 
-                <!-- Product 8: Cashmere Sweater -->
                 <div class="product-card" data-category="clothing">
                     <div class="product-image cool-cream">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Sweater icon -->
                             <path d="M20 20l10-5 20 0 10 5v50H20V20z" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
                             <path d="M30 15v10" stroke="#E65100" stroke-width="2"/>
                             <path d="M50 15v10" stroke="#E65100" stroke-width="2"/>
@@ -465,17 +420,14 @@
                     </div>
                 </div>
 
-                <!-- ===== ACCESSORIES PRODUCTS - Elegant Backgrounds ===== -->
-
-                <!-- Product 9: Gold Watch -->
+                <!-- ===== ACCESSORIES ===== -->
                 <div class="product-card" data-category="accessories">
                     <div class="product-image elegant-gold">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Watch icon -->
                             <rect x="28" y="5" width="24" height="12" rx="3" fill="#8D6E63"/>
                             <circle cx="40" cy="40" r="22" fill="#FFD700" stroke="#FFA000" stroke-width="2"/>
                             <circle cx="40" cy="40" r="18" fill="#FFF8E1"/>
-                            <circle cx="40" cy="40" r="2" fill="#333"/>
+                            <circle cx="40" cy="40" r="3" fill="#333"/>
                             <line x1="40" y1="40" x2="40" y2="28" stroke="#333" stroke-width="2"/>
                             <line x1="40" y1="40" x2="48" y2="40" stroke="#333" stroke-width="1.5"/>
                             <rect x="28" y="63" width="24" height="12" rx="3" fill="#8D6E63"/>
@@ -498,14 +450,12 @@
                     </div>
                 </div>
 
-                <!-- Product 10: Leather Bag -->
                 <div class="product-card" data-category="accessories">
                     <div class="product-image elegant-taupe">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Bag icon -->
                             <path d="M15 30c0-5 5-10 10-10h30c5 0 10 5 10 10v40H15V30z" fill="#D7CCC8" stroke="#5D4037" stroke-width="2"/>
                             <path d="M30 20c0-8 5-12 10-12s10 4 10 12" stroke="#5D4037" stroke-width="3" fill="none"/>
-                            <rect x="32" y="42" width="16" height="10" rx="2" fill="#8D6E63" stroke="#5D4037" stroke-width="1.5"/>
+                            <rect x="32" y="42" width="16" height="10" rx="3" fill="#8D6E63" stroke="#5D4037" stroke-width="1.5"/>
                             <circle cx="40" cy="47" r="2" fill="#D7CCC8"/>
                         </svg>
                     </div>
@@ -526,12 +476,10 @@
                     </div>
                 </div>
 
-                <!-- Product 11: Sunglasses -->
                 <div class="product-card" data-category="accessories">
                     <div class="product-badge" data-key="badge_new">جديد</div>
                     <div class="product-image elegant-black">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Sunglasses icon -->
                             <path d="M10 35c0-5 5-8 10-8h12c5 0 8 3 8 8v8c0 8-6 14-14 14s-14-6-14-14v-8z" fill="#212121" stroke="#424242" stroke-width="2"/>
                             <path d="M40 35c0-5 5-8 10-8h12c5 0 8 3 8 8v8c0 8-6 14-14 14s-14-6-14-14v-8z" fill="#212121" stroke="#424242" stroke-width="2"/>
                             <line x1="28" y1="32" x2="52" y2="32" stroke="#424242" stroke-width="2"/>
@@ -556,11 +504,9 @@
                     </div>
                 </div>
 
-                <!-- Product 12: Scarf -->
                 <div class="product-card" data-category="accessories">
                     <div class="product-image elegant-terracotta">
                         <svg class="product-icon" viewBox="0 0 80 80" fill="none">
-                            <!-- Scarf icon -->
                             <path d="M20 15c0 0 15 5 20 20s-5 25-5 25" stroke="#E64A19" stroke-width="8" fill="none" stroke-linecap="round"/>
                             <path d="M30 10c0 0 15 5 20 20s-5 25-5 25" stroke="#FF7043" stroke-width="6" fill="none" stroke-linecap="round"/>
                             <path d="M40 8c0 0 15 5 20 20s-5 25-5 25" stroke="#FFAB91" stroke-width="4" fill="none" stroke-linecap="round"/>
@@ -868,6 +814,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- ==================== FLOATING BOTTOM BAR ==================== -->
+    <div class="floating-bar" id="floatingBar">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="langSwitcher">
+            <button class="lang-btn active" data-lang="ar">AR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="it">IT</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="themeToggle">
+            <div class="toggle-track">
+                <div class="toggle-thumb">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ==================== SCRIPTS ==================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
