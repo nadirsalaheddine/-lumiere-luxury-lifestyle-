@@ -36,8 +36,7 @@ A premium, fully-functional e-commerce landing page showcasing luxury skincare, 
 ---
 
 ## 🎨 Design Philosophy
-
-Inspired by **BellaVita** aesthetics — clean, minimal, and luxurious:
+aesthetics — clean, minimal, and luxurious:
 
 - **Rounded corners** on every element (12px–36px)
 - **Glassmorphism** navbar & overlays
